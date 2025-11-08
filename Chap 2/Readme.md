@@ -1,9 +1,9 @@
 # Comparative Study of Thread Synchronization Techniques in Python
-1. Overview
+## 1. Overview
 
 This project explores and evaluates several thread synchronization mechanisms in Python by executing identical computational tasks under different synchronization strategies. Each approach manages concurrent access to shared data while performing the same mensuration calculation.
 
-2. Consistency of Computation
+## 2. Consistency of Computation
 
 Across all synchronization models, the resulting calculations were identical, confirming that each approach maintained correctness:
 
@@ -13,7 +13,7 @@ Precise value: 3216.4600329384884 / 3216.4660329384884
 
 This validates that differences in performance arise solely from synchronization overhead, not computational discrepancies.
 
-3. Performance Analysis
+## 3. Performance Analysis
 Synchronization Method	Approx. Execution Time	Core Concept	Advantages	Limitations
 Barrier	~1 sec	Synchronizes threads at a common point	Guarantees all threads progress together	Less flexible for dynamic coordination
 Condition Variable	~37 sec	Wait/notify coordination model	Excellent for producer-consumer setups	Implementation complexity
@@ -22,12 +22,12 @@ Lock (Mutex)	0.0093 sec	Mutual exclusion for critical sections	Fastest, low over
 Blocking Queue	N/A	Thread-safe data exchange	Automatic synchronization	Extra memory and timing overhead
 Semaphore	~22 sec	Manages limited shared resources	Effective for resource counting	Harder to tune and debug
 Thread with Queue	N/A	Message-passing via queue	Decouples threads cleanly	Queue latency overhead
-4. Observations & Insights
+## 4. Observations & Insights
 🥇 Top Performer: Lock-Based Synchronization
 
 Execution Time: 0.0093 seconds
 
-Highlights:
+## Highlights:
 
 Minimal synchronization overhead
 
@@ -39,7 +39,7 @@ Most suitable for small-scale critical sections
 
 Execution Time: ~37 seconds
 
-Highlights:
+## Highlights:
 
 Excellent for signaling and waiting scenarios
 
@@ -49,26 +49,26 @@ Best suited for producer-consumer and coordinated task management
 
 Execution Time: ~8 seconds
 
-Highlights:
+## Highlights:
 
 Ideal for flag-based signaling between threads
 
 Minimal setup required
 
-5. Performance Ranking
+## 5. Performance Ranking
 Rank	Mechanism	Time	Notes
 1️⃣	Lock-Based	0.0093 s	⚡ Fastest and most efficient
 2️⃣	Event	~8 s	✅ Simple and lightweight
 3️⃣	Semaphore	~22 s	⚙️ Balanced control
 4️⃣	Condition Variables	~37 s	🧩 Best for coordination
 5️⃣	Barrier	~1 s (context-dependent)	⏱️ Ensures simultaneous progress
-6. Recommendations
+## 6. Recommendations
 Use Case	Recommended Mechanism	Rationale
 High-performance, simple mutual exclusion	Lock	Extremely fast, minimal overhead
 Complex thread coordination	Condition Variable	Efficient waiting and signaling
 Basic thread signaling	Event	Simplest implementation
 Resource-limited access control	Semaphore	Controls concurrent resource usage
-7. Conclusion
+## 7. Conclusion
 
 The study reveals that lock-based synchronization provides the best raw performance, achieving near-instant execution while maintaining consistency.
 However, the optimal synchronization technique depends on application context:
