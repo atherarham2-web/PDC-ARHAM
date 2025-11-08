@@ -1,4 +1,4 @@
-## Comparative Study of Thread Synchronization Techniques in Python
+# Comparative Study of Thread Synchronization Techniques in Python
 1. Overview
 
 This project explores and evaluates several thread synchronization mechanisms in Python by executing identical computational tasks under different synchronization strategies. Each approach manages concurrent access to shared data while performing the same mensuration calculation.
